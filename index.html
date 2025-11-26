@@ -847,6 +847,8 @@ function updateMusicState() {
     }
 }
 
+	
+
 musicControl.addEventListener('click', ()=>{
   if(isPlaying){ 
       music.pause(); 
@@ -871,6 +873,14 @@ music.addEventListener('pause', ()=>{
 // Al cargar, establece el estado inicial (que por defecto es pausa/silencio)
 updateMusicState();
 
+document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+        music.pause();
+        isPlaying = false;
+        updateMusicState();
+    }
+});
+	
 // Countdown
 const target = new Date('Dec 28, 2025 19:00:00').getTime();
 function updateCountdown(){
@@ -1044,3 +1054,4 @@ content.style.display = 'none';
 </body>
 
 </html>
+
